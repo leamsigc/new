@@ -17,29 +17,8 @@ const h1 = document.querySelector('h1');
 const resetBtn = document.getElementById('reset-btn');
 // mode buttons;
 const mode = document.querySelectorAll('.mode');
-// // Easy btn ;
-// const easyBtn = document.getElementById('easy-btn');
-// //Hard btn ;
-// const hardBtn = document.getElementById('hard-btn');
-
+init();
 // loop to all the squares ;
-squares.forEach(function (item, i) {
-    changeSquaresBackground(item, i);
-    //add click listener for the squares
-    item.addEventListener('click', function () {
-        //grab color of the square clicked;
-        const currentColor = this.style.backgroundColor;
-        //compare color to colorPicked
-        if (currentColor === pickColor) {
-            resetBtn.textContent = 'Play Again'
-            message.textContent = 'CORRECT';
-            changeColors(pickColor);
-        } else {
-            this.style.backgroundColor = '#232323';
-            message.textContent = 'Try Again';
-        }
-    });
-});
 //change squares background color;
 function changeSquaresBackground(item, i) {
     //add initial colors;
@@ -77,35 +56,36 @@ function generateRandomColors(num) {
 }
 //add event listener to reset button ;
 resetBtn.addEventListener('click', reset);
-// function () {
-//     //generate new colors;
-//     colors = generateRandomColors(numSquares);
-//     //pick new color from the array;
-//     pickColor = pickColorFun();
-//     colorDisplay.textContent = pickColor;
-//     //display all the colors;
-//     squares.forEach(changeSquaresBackground);
-//     // reset the h1 bg color;
-//     h1.style.backgroundColor = 'steelblue';
-//     // reset the message ;
-//     message.textContent = '';
-//     this.textContent='New colors'
-// });
-// add event listener for the mode;
-mode.forEach(function(item){
-    item.addEventListener('click',function(){
-        mode[0].classList.remove('selected');
-        mode[1].classList.remove('selected');
-        this.classList.add('selected');
-        this.textContent === "Easy" ? numSquares = 3 : numSquares = 6 ;
-        // if(this.textContent === "Easy"){
-        //     numSquares = 3;
-        // }else{
-        //     numSquares=6;
-        // }
-        reset();
+function setupMode(){
+    mode.forEach(function(item){
+        item.addEventListener('click',function(){
+            mode[0].classList.remove('selected');
+            mode[1].classList.remove('selected');
+            this.classList.add('selected');
+            this.textContent === "Easy" ? numSquares = 3 : numSquares = 6 ;
+            reset();
+        });
     });
-});
+}
+function setupSquares() {
+    squares.forEach(function (item, i) {
+        changeSquaresBackground(item, i);
+        //add click listener for the squares
+        item.addEventListener('click', function () {
+            //grab color of the square clicked;
+            const currentColor = this.style.backgroundColor;
+            //compare color to colorPicked
+            if (currentColor === pickColor) {
+                resetBtn.textContent = 'Play Again'
+                message.textContent = 'CORRECT';
+                changeColors(pickColor);
+            } else {
+                this.style.backgroundColor = '#232323';
+                message.textContent = 'Try Again';
+            }
+        });
+    });
+}
 //reset function ;
 function reset(){
     colors = generateRandomColors(numSquares);
@@ -120,33 +100,8 @@ function reset(){
     message.textContent = '';
     resetBtn.textContent='New colors'
 }
-//add event listener for the easy btn ;
-// easyBtn.addEventListener('click', function () {
-//     numSquares = 3
-//     //change the background color ;
-//     this.classList.add('selected');
-//     //change the hard btn background color ;
-//     hardBtn.classList.remove('selected');
-//     //generate colors;
-//     colors = generateRandomColors(numSquares);
-//     //pick new color fom the array;
-//     pickColor = pickColorFun();
-//     colorDisplay.textContent = pickColor;
-//     //display color ;
-//     squares.forEach(changeSquaresBackground);
-// });
-// // add event lister for the hard btn
-// hardBtn.addEventListener('click', function () {
-//     numSquares = 6;
-//     //change the background color ;
-//     this.classList.add('selected');
-//     //change the hard btn background color ;
-//     easyBtn.classList.remove('selected');
-//     //generate colors;
-//     colors = generateRandomColors(numSquares);
-//     //pick new color fom the array;
-//     pickColor = pickColorFun();
-//     colorDisplay.textContent = pickColor;
-//     //display color ;
-//     squares.forEach(changeSquaresBackground);
-// });
+function init(){
+    setupMode();
+    setupSquares();
+    reset();
+}
