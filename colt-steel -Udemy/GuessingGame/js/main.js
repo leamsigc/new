@@ -11,6 +11,8 @@ colorDisplay.textContent = pickColor;
 const message = document.getElementById('message');
 //h1 
 const h1 = document.querySelector('h1');
+// reset btn for new game or new colors
+const resetBtn = document.getElementById('reset-btn');
 // loop to all the squares ;
 squares.forEach(function (item, i) {
     //add initial colors;

@@ -30,3 +30,8 @@ body {
   background: purple;
   border-radius: 10px;
   margin: 10px; }
+
+nav {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  color: #000000; }
