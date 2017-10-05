@@ -1,25 +1,32 @@
 * {
   padding: 0;
   margin: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 body {
-  background: #232323; }
+  background: #232323;
+  color: #f2f2f2;
+  text-align: center; }
 
 .container {
-  max-width: 800px;
-  min-height: 600px;
-  background: #b2b2b2;
+  max-width: 600px;
+  min-height: 400px;
   margin-left: auto;
   margin-right: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
   justify-content: space-around; }
 
 .square {
   width: 30%;
   background: purple;
   border-radius: 10px;
-  margin: 1.5%; }
-
-/*# sourceMappingURL=main.css.map */
+  margin: 10px; }
