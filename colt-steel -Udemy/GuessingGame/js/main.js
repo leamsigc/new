@@ -1,8 +1,8 @@
-const colors = generateRandomColors(6);
+let colors = generateRandomColors(6);
 // select all que squares ;
 const squares = document.querySelectorAll('.square');
 //pickColor
-const pickColor = pickColorFun();
+let pickColor = pickColorFun();
 // display color;
 const colorDisplay = document.getElementById('colorDisplay');
 //display color picket
@@ -14,9 +14,8 @@ const h1 = document.querySelector('h1');
 // reset btn for new game or new colors
 const resetBtn = document.getElementById('reset-btn');
 // loop to all the squares ;
-squares.forEach(function (item, i) {
-    //add initial colors;
-    item.style.backgroundColor = colors[i];
+squares.forEach(function(item , i){
+    changeSquaresBackground(item,i);
     //add click listener for the squares
     item.addEventListener('click', function () {
         console.log(pickColor);
@@ -25,6 +24,7 @@ squares.forEach(function (item, i) {
         console.log(currentColor);
         //compare color to colorPicked
         if (currentColor === pickColor) {
+            resetBtn.textContent = 'Play Again'
             message.textContent = 'CORRECT';
             changeColors(pickColor);
         } else {
@@ -33,7 +33,12 @@ squares.forEach(function (item, i) {
         }
     });
 });
-
+//change squares background color;
+function changeSquaresBackground(item , i){
+    //add initial colors;
+    item.style.backgroundColor = colors[i];
+    //add click listener for the squares
+}
 
 // change color to all the squares if correct
 function changeColors(color) {
@@ -58,3 +63,15 @@ function generateRandomColors(num) {
     }
     return arr;
 }
+//add event listener to reset button ;
+resetBtn.addEventListener('click', function(){
+    //generate new colors;
+    colors = generateRandomColors(6);
+    //pick new color from the array;
+    pickColor = pickColorFun();
+    colorDisplay.textContent = pickColor;
+    //display all the colors;
+    squares.forEach(changeSquaresBackground);
+    // reset the h1 bg color;
+    h1.style.backgroundColor = '#232323';
+});
