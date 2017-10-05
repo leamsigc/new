@@ -1,4 +1,6 @@
-let colors = generateRandomColors(6);
+// number of suares 
+let numSquares = 6;
+let colors = generateRandomColors(numSquares);
 // select all que squares ;
 const squares = document.querySelectorAll('.square');
 //pickColor
@@ -13,6 +15,11 @@ const message = document.getElementById('message');
 const h1 = document.querySelector('h1');
 // reset btn for new game or new colors
 const resetBtn = document.getElementById('reset-btn');
+// Easy btn ;
+const easyBtn = document.getElementById('easy-btn');
+//Hard btn ;
+const hardBtn = document.getElementById('hard-btn');
+
 // loop to all the squares ;
 squares.forEach(function(item , i){
     changeSquaresBackground(item,i);
@@ -36,7 +43,12 @@ squares.forEach(function(item , i){
 //change squares background color;
 function changeSquaresBackground(item , i){
     //add initial colors;
-    item.style.backgroundColor = colors[i];
+    if(colors[i]){
+        item.style.backgroundColor = colors[i];
+        item.style.display='block';
+    }else{
+        item.style.display='none';
+    }
     //add click listener for the squares
 }
 
@@ -66,12 +78,42 @@ function generateRandomColors(num) {
 //add event listener to reset button ;
 resetBtn.addEventListener('click', function(){
     //generate new colors;
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numSquares);
     //pick new color from the array;
     pickColor = pickColorFun();
     colorDisplay.textContent = pickColor;
     //display all the colors;
     squares.forEach(changeSquaresBackground);
     // reset the h1 bg color;
-    h1.style.backgroundColor = '#232323';
+    h1.style.backgroundColor = 'steelblue';
+});
+//add event listener for the easy btn ;
+easyBtn.addEventListener('click', function(){
+    numSquares = 3
+    //change the background color ;
+    this.classList.add('selected');
+    //change the hard btn background color ;
+    hardBtn.classList.remove('selected');
+    //generate colors;
+    colors=generateRandomColors(numSquares);
+    //pick new color fom the array;
+    pickColor = pickColorFun();
+    colorDisplay.textContent = pickColor;
+    //display color ;
+    squares.forEach(changeSquaresBackground);
+});
+// add event lister for the hard btn
+hardBtn.addEventListener('click', function(){
+    numSquares = 6 ;
+    //change the background color ;
+    this.classList.add('selected');
+    //change the hard btn background color ;
+    easyBtn.classList.remove('selected');
+    //generate colors;
+    colors=generateRandomColors(numSquares);
+    //pick new color fom the array;
+    pickColor = pickColorFun();
+    colorDisplay.textContent = pickColor;
+    //display color ;
+    squares.forEach(changeSquaresBackground);
 });
