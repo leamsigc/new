@@ -62,13 +62,15 @@ nav {
     border: none;
     padding: 10px 20px;
     font-weight: bold;
-    color: steelblue; }
+    color: steelblue;
+    outline: none; }
     nav button:hover {
       background: rgba(0, 0, 0, 0.4); }
   nav span {
     display: inline-block;
     text-align: center;
-    width: 25%; }
+    width: 25%;
+    color: steelblue; }
 
 .selected {
   background: steelblue;
