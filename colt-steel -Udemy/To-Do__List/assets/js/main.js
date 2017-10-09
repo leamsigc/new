@@ -1,19 +1,19 @@
 $( document ).ready(function() {
-    $('li').on('click',function () {
-        $(this).css({
-        'color':'red',
-        'text-decoration':'line-through'
+    $('ul').on('click','li',function () {
+        $(this).toggleClass('complete');
     });
-    });
-   $('i.fa-trash').on('click',function() {
+   $('ul').on('click','i.fa-trash',function() {
        $(this).parent().remove();
-    // console.log('click')
    ;});
    $('input[type="text"]').on('keyup', function(e){
-       console.log(e.keyCode);
-       if(e.keyCode === 13){
-            let inputVlaue = $(this).val()
-            $('ul').append('<li><i class="fa fa-trash> </i>"'+inputVlaue+'</li>');
+       let inputValue = $(this).val();
+       if(e.keyCode === 13 && inputValue !== ""){
+            $('ul').append('<li><i class="fa fa-trash"> </i>'+inputValue+'</li>');
+            $(this).val('');
        }
+   });
+   $('.fa-plus').on('click',function(){
+       console.log('click');
+       $('input[type="text"]').toggleClass('toggle');
    });
 });
