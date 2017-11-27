@@ -1,6 +1,7 @@
 /* Variables css */
 :root{
     --mainFont: 'Open Sans', sans-serif;
+    --mainbgColor:#f7f8fa;
 }
 
 *{
@@ -13,6 +14,7 @@ html{
 }
 body{
     font-family: var(--mainFont);
+    background: var(--mainbgColor);
 }
 /* GENERAL CSS */
 h1{
@@ -52,6 +54,8 @@ p{
 }
 /* header nav bar and logo */
 header{
+    max-width: 1200px;
+    margin: 0 auto;
     background: #ffffff;
     text-align: center;
     display: flex;
@@ -143,10 +147,86 @@ header .profileContainer{
     bottom: 0;
 }
 .hero .hero_text{
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
     z-index: 200;
     color: #ffffff;
-    padding: 4rem 3rem ;
+    padding: 6rem 0 ;
 }
 .hero_text p{
     max-width: 80%;
+}
+/* course showcase */
+.course_container{
+    max-width: 960px;
+    width: 100%;
+    margin: 20px auto;
+    color: #5f6672;
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-areas: "title title title title";
+    grid-template-rows: auto;
+    grid-column-gap: 10px;
+    
+}
+.container_title{
+    margin: 20px 0;
+    font-size: 1rem;
+    grid-area: title;
+}
+.course_card{
+    
+    box-shadow: 0 0 4px 2px rgba(2, 2, 0, 0.2);
+    /* text-align: center; */
+    color: #5f6672;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 2px;
+}
+.course_card__img{
+    display: block;
+    width: 100%;
+    height:125px ;
+    border-radius: 2px 2px 0 0 ;
+}
+.course_card__title{
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 10px ;
+}
+.course_card__author{
+    font-size: 0.6rem;
+    padding: 0  10px 10px;
+}
+.course_card__rating{
+    font-size: 0.6rem;
+    padding: 0 40px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.course_card__rating .fa{
+    color: #f1c665;
+}
+.course_card__rating span{
+    color: #5f6672;
+}
+.course_card__rating span:nth-child(3){
+    color: #b5b9c0
+}
+.course_card__price{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #455055;
+    padding: 10px;
+    font-size: 1rem;
+    padding: 10px;
+}
+.course_card__price span:nth-child(1){
+    text-decoration: line-through;
+    color: #b5b9c0;
+    font-size: 0.6rem;
+    margin-right: 10px;
 }
