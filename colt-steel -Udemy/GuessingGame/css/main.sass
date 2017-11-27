@@ -1,0 +1,66 @@
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body 
+    background: #232323
+    color: #f2f2f2
+    text-align: center
+    font-size: 16px
+    font-family: 'Montserrat',Verdana, Geneva, Tahoma, sans-serif
+// h1 css
+h1 
+    line-height: 180%
+    font-size: 2rem
+    font-weight: 300
+    text-transform: uppercase
+    background-color: steelblue
+    padding: 30px 5px
+    span
+        display: block
+        font-size: 4rem
+        color: rgba(#000,0.5)
+// CONTAINER CSS =======
+.container
+    max-width: 600px
+    min-height: 450px
+    margin-left: auto
+    margin-right: auto
+    margin-top: 40px
+    // display 
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+// square css ======
+.square
+    width: 30%
+    max-height: 200px
+    background: purple 
+    border-radius: 10px
+    margin: 10px
+    transition: all 0.5s ease-in-out
+// navigation bar css =========
+nav
+    background: #f3f3f3
+    color: #000000
+    text-transform: uppercase
+    button
+        background: none
+        transition: all 0.5s ease-in-out
+        border: none
+        padding: 10px 20px 
+        font-weight: bold
+        color: steelblue
+        outline: none
+        &:hover
+            background: rgba(#000,0.4)
+    span
+        display: inline-block
+        text-align: center
+        width: 25%
+        color: steelblue
+// selected button background
+.selected
+    background: steelblue
+    color: white
